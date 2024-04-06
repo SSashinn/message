@@ -1,0 +1,62 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+}
+
+:root{
+  --bg-color: rgb(54,57,62);
+  --font: 'Times New Roman', Times, serif;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 1px 10px rgba(25, 27, 29, 0.938);
+}
+.friend{
+  display: flex;
+  align-items: center;
+}
+
+.user{
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
+}
+.header-title{
+  color: white;
+  font-size: 1.1em;
+  font-family: var(--font);
+  box-shadow: 3px 0px gray;
+  padding-right: 15px;
+}
+.header-word{
+  color: white;
+  font-size: 1.1em;
+  font-family: var(--font);
+  margin: 0;
+  margin-left: 20px;
+  padding: 20px;  
+  cursor: pointer;
+}
+
+.header-word:hover{
+  background-color: rgb(115, 115, 116);
+}
+
+.add-friend{
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  font-family: var(--font);
+  font-size: 1.1em;
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+  min-width: 100px;
+  height: fit-content;
+  padding: 5px;
+  margin-left: 20px;
+}
+
