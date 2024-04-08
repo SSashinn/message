@@ -9,7 +9,9 @@ exports.signup_post = [
     .isLength({ min: 1 })
     .escape()
     .withMessage("Username must not be empty")
-    .custom(async (value, req, next) => {
+    .isLength({max:12})
+    .withMessage("Username must not exceed 12 lettersd")
+    .custom(async (value) => {
       const username = await User.exists({ username: value });
       // if username is already taken, throw error
       if (username) {
@@ -28,7 +30,6 @@ exports.signup_post = [
     if (!errors.isEmpty()) {
       res.status(400).json({
         status: 400,
-        username,
         errors: errors.array()
       });
     } else {
