@@ -1,15 +1,13 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import {Outlet} from 'react-router-dom';
 
-export default function Home() {
+export default function Error() {
   return (
     <div className="home-container">
       <Header />
       <Sidebar />
       <main>
-        <Outlet />
+        <h1>Error</h1>
       </main>
-    </div>
-  )
+    </div>  )
 }
