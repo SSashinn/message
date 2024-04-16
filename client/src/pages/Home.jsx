@@ -1,9 +1,11 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import {Outlet} from 'react-router-dom';
+import {Outlet, Navigate} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 export default function Home() {
-  return (
+  const {currentUser} = useSelector(state => state.user) // state.User is the name of userSlice
+  return currentUser ? (
     <div className="home-container">
       <Header />
       <Sidebar />
@@ -11,5 +13,5 @@ export default function Home() {
         <Outlet />
       </main>
     </div>
-  )
+  ) : <Navigate to={'/signin'}/>
 }
