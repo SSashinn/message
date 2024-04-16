@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  // Get username to display it in header
+  const {username} = useSelector(state => state.user.currentUser.userData);
   return (
     <header className="header">
       <div className="friend">
@@ -13,7 +16,7 @@ export default function Header() {
         <Link to={'/addfriend'}><button className="add-friend" type="button">Add Friend</button></Link>
       </div>
       <div className="user">
-        <h4 className="header-word">User</h4>
+        <h4 className="header-word">{username}</h4>
         <img src="setting.svg?url" width='30px' style={{cursor: 'pointer'}}></img>
       </div>
     </header>
