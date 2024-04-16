@@ -192,3 +192,9 @@ input{
 .addfriend-submit:hover{
   background-color: darkblue;
 }
+
+.error-text{
+  font-size: 1.1em;
+  color: white;
+  font-family: var(--font);
+}

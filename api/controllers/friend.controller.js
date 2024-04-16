@@ -20,7 +20,15 @@ exports.addFriend = [
     }),
 
   // Escape 'selfObjectID' field
-  body('selfObjectID').escape(),
+  body('selfObjectID')
+  .escape()
+  // Check whether the object id recived is valid
+  .custom(async (value) => {
+    if (!ObjectId.isValid(value)) {
+      // If not valid, return a 400 Bad Request response
+      throw new Error("Invalid Id");
+    }
+  }),
 
   // Route handler to add friend
   asyncHandler(async (req, res, next) => {
@@ -34,24 +42,18 @@ exports.addFriend = [
       });
     };
 
-    // Check whether the object id recived is valid
-    const isValidObjectId = ObjectId.isValid(selfObjectID);
-    if (!isValidObjectId) {
-      // If not valid, return a 400 Bad Request response
-      return res.status(400).json({ message: "Invalid ID" });
-    }
-
     // Find the user by username
     const user = await User.findOne({ username });
     // Check if friend request already sent
     if (user.friend_request.includes(selfObjectID)) {
       res.status(400).json({
-        message: "You have already send a friend request to this person",
+        message: [{msg:"You have already send a friend request to this person"}],
       });
     } else {
       // If not sent, add friend request and return a 201 Created response
       await user.updateOne({ $push: { friend_request: selfObjectID } });
       res.status(201).json({
+        status: 201,
         message: "Friend request successfully sent",
       })
     }
