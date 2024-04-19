@@ -59,3 +59,37 @@ exports.addFriend = [
     }
   }),
 ];
+
+exports.pendingRequest = [
+  body('selfObjectID')
+  .escape()
+  // Check whether the object id recived is valid
+  .custom(async (value) => {
+    if (!ObjectId.isValid(value)) {
+      // If not valid, return a 400 Bad Request response
+      throw new Error("Invalid Id");
+    }
+  }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    // If there are validation errors, return them
+    if (!errors.isEmpty()) {
+      res.status(400).json({
+        message: errors.array(),
+      });
+    };
+    const {selfObjectID } = req.body;
+    const user = await User.findById(selfObjectID).populate("friend_request");
+      if (!user) {
+        return res.status(404).json({
+          message: "User not found",
+        });
+      }
+      const request = user.friend_request.map(val => ({
+        name: val.username,
+        id: val._id
+      }));
+    res.status(200).json({status:200,request});
+  }) 
+]

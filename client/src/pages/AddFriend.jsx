@@ -43,7 +43,7 @@ export default function AddFriend() {
 
   return (
     <div className="addfriend-container"> 
-      <h3 className= "addfriend-title">ADD FRIEND</h3>
+      <h3 className= "component-title">ADD FRIEND</h3>
       <p className="addfriend-p">You can add friends with their username</p>
       <form onSubmit={handleSubmit} method="POST">
         <input

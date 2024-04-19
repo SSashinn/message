@@ -1,0 +1,42 @@
+.acceptBtn{
+  background-color: green;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.acceptBtn:hover{
+  background-color: darkgreen;
+}
+
+.rejectBtn:hover{
+  background-color: darkred;
+}
+.rejectBtn{
+  background-color: red;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 30px;
+}
+
+img{
+  height: 24px;
+  width: 24px;
+}
+
+.reqContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px;
+  max-width: 900px;
+  border-bottom: 3px solid gray;
+}
+
+.name{
+  font-size: 1.3em;
+  color: white;
+  font-weight: bold;
+  padding-left: 10px;
+}
