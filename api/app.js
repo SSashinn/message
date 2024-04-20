@@ -20,9 +20,13 @@ async function main() {
 
 const userRouter = require('./routes/user.route.js');
 const friendRouter = require('./routes/friend.route.js');
+const pendingRouter = require('./routes/pending.route.js');
+
 
 app.use('/v1/api', userRouter);
 app.use('/v1/api', friendRouter);
+app.use('/v1/api', pendingRouter);
+
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

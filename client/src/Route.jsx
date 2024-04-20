@@ -2,12 +2,12 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
-import AddFriend from './components/AddFriend';
+import AddFriend from './pages/AddFriend';
 import Error from './pages/Error';
-import All from './components/All';
-import Online from './components/Online';
-import Pending from './components/Pending';
-import Blocked from './components/Blocked';
+import All from './pages/All';
+import Online from './pages/Online';
+import Pending from './pages/Pending';
+import Blocked from './pages/Blocked';
 
 export default function Route() {
   const router = createBrowserRouter([

@@ -7,6 +7,7 @@ export default function Home() {
   const {currentUser} = useSelector(state => state.user) // state.User is the name of userSlice
   return currentUser ? (
     <div className="home-container">
+      <h1 id="app-name">CHATME</h1>
       <Header />
       <Sidebar />
       <main>

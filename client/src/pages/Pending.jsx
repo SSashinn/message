@@ -27,7 +27,6 @@ export default function Pending() {
           setLoading(false);
           return;
         }
-        console.log(responseData);
         setData(responseData);
         setError(null);
         setLoading(false);
@@ -36,9 +35,35 @@ export default function Pending() {
         setError(error.message);
       }
     };
-
     fetchData();
   }, [selfObjectID]);
+
+  const rejectReq = async (username) => {
+    try {
+      setLoading(true);
+      console.log(username);
+      const res = await fetch('http://localhost:3000/v1/api/reject', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({username, selfObjectID }),
+      });
+      const responseData = await res.json();
+
+      if (res.status !== 200) {
+        setError(responseData.message[0].msg);
+        setLoading(false);
+        return;
+      }
+      setData(responseData);
+      setError(null);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
+  };
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -57,12 +82,12 @@ export default function Pending() {
   return (
     <div className="addfriend-container">
       <h2 className= "component-title">Pending Requests</h2>
-      {data.request.map(value => (
-        <div key={value.id} className={styles.reqContainer}>
-          <p className={styles.name}>{value.name}</p>
+      {data.request.map(element => (
+        <div key={element.id} className={styles.reqContainer}>
+          <p className={styles.name}>{element.name}</p>
           <div>
             <button className={styles.acceptBtn}><img src="correct.png?url"/></button>
-            <button className={styles.rejectBtn}><img src="wrong.png?url"/></button>
+            <button className={styles.rejectBtn} onClick={() =>rejectReq(element.name)}><img src="wrong.png?url"/></button>
 
           </div>
         </div>

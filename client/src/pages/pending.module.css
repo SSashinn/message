@@ -29,9 +29,14 @@ img{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30px;
+  margin: 10px;
   max-width: 900px;
   border-bottom: 3px solid gray;
+  padding-right: 14px;
+}
+
+.reqContainer:hover{
+  background-color: rgb(84, 84, 95);
 }
 
 .name{
