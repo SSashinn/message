@@ -38,11 +38,11 @@ export default function Pending() {
     fetchData();
   }, [selfObjectID]);
 
-  const rejectReq = async (username) => {
+  const rejectReq = async (username, path) => {
     try {
       setLoading(true);
       console.log(username);
-      const res = await fetch('http://localhost:3000/v1/api/reject', {
+      const res = await fetch(`http://localhost:3000/v1/api/${path}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,8 +86,8 @@ export default function Pending() {
         <div key={element.id} className={styles.reqContainer}>
           <p className={styles.name}>{element.name}</p>
           <div>
-            <button className={styles.acceptBtn}><img src="correct.png?url"/></button>
-            <button className={styles.rejectBtn} onClick={() =>rejectReq(element.name)}><img src="wrong.png?url"/></button>
+            <button className={styles.acceptBtn} onClick={() =>rejectReq(element.name, 'accept')}><img src="correct.png?url"/></button>
+            <button className={styles.rejectBtn} onClick={() =>rejectReq(element.name, 'reject')}><img src="wrong.png?url"/></button>
 
           </div>
         </div>
