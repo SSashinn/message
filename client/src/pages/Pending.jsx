@@ -27,6 +27,7 @@ export default function Pending() {
           setLoading(false);
           return;
         }
+        console.log(responseData)
         setData(responseData);
         setError(null);
         setLoading(false);
@@ -47,7 +48,7 @@ export default function Pending() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({username, selfObjectID }),
+        body: JSON.stringify({ username, selfObjectID }),
       });
       const responseData = await res.json();
 
@@ -76,19 +77,21 @@ export default function Pending() {
     );
   }
   if (!data) {
-    return <div>No pending requests found.</div>;
+    return <div>Oops, there must be some error</div>;
   }
 
   return (
     <div className="addfriend-container">
-      <h2 className= "component-title">Pending Requests</h2>
+      <h2 className="component-title">Pending Requests</h2>
+      {data.request && data.request.length === 0 && (
+        <p className={styles.name}>No pending requests found.</p>
+      )}
       {data.request.map(element => (
         <div key={element.id} className={styles.reqContainer}>
           <p className={styles.name}>{element.name}</p>
           <div>
-            <button className={styles.acceptBtn} onClick={() =>rejectReq(element.name, 'accept')}><img src="correct.png?url"/></button>
-            <button className={styles.rejectBtn} onClick={() =>rejectReq(element.name, 'reject')}><img src="wrong.png?url"/></button>
-
+            <button className={styles.acceptBtn} onClick={() => rejectReq(element.name, 'accept')}><img src="correct.png?url" /></button>
+            <button className={styles.rejectBtn} onClick={() => rejectReq(element.name, 'reject')}><img src="wrong.png?url" /></button>
           </div>
         </div>
       ))}
