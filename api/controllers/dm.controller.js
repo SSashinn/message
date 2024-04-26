@@ -38,7 +38,7 @@ exports.createDM = [
       });
     };
     const dmExist = await Dm.findOne({
-      $or: [
+      $and: [
         { user1: { $in: [selfObjectID, otherObjectID] } },
         { user2: { $in: [selfObjectID, otherObjectID] } }
       ]
