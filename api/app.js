@@ -21,11 +21,13 @@ async function main() {
 const userRouter = require('./routes/user.route.js');
 const friendRouter = require('./routes/friend.route.js');
 const pendingRouter = require('./routes/pending.route.js');
+const dmRouter = require('./routes/dm.route.js');
 
 
 app.use('/v1/api', userRouter);
 app.use('/v1/api', friendRouter);
 app.use('/v1/api', pendingRouter);
+app.use('/v1/api', dmRouter);
 
 
 app.listen(PORT, () => {

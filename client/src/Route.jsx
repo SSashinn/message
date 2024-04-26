@@ -8,6 +8,7 @@ import All from './pages/All';
 import Online from './pages/Online';
 import Pending from './pages/Pending';
 import Blocked from './pages/Blocked';
+import Dm from './pages/Dm';
 
 export default function Route() {
   const router = createBrowserRouter([
@@ -41,6 +42,12 @@ export default function Route() {
           element: <Blocked />,
 
         },
+        {
+          path: '/message/*',
+          element: <Dm />,
+
+        },
+
       ]
     },
     {
