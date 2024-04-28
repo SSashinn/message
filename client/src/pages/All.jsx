@@ -34,7 +34,6 @@ export default function All() {
       setLoading(false);
       const id = data.message;
       navigate(`/message/${id}`);
-      console.log(id)
       // setError(data.message);
     } catch (error) {
       setLoading(false);

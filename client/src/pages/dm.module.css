@@ -1,0 +1,30 @@
+.submitBtn{
+  border-radius: 10px;
+  min-width: 105px;
+  font-size: 1.1em;
+  font-weight: bold;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  height: 40px;
+  border: none;
+}
+
+.submitBtn:hover{
+  background-color: darkgreen;
+}
+
+.input{
+  background: rgb(110, 115, 124);
+  min-width: 75vw;
+  border: none;
+  border-radius: 5px;
+  margin: 15px;
+  padding-left: 10px;
+}
+
+.dmContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -10,9 +10,7 @@ export default function Home() {
       <h1 id="app-name">CHATME</h1>
       <Header />
       <Sidebar />
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
     </div>
   ) : <Navigate to={'/signin'}/>
 }

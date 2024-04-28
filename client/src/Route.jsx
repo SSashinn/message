@@ -43,7 +43,7 @@ export default function Route() {
 
         },
         {
-          path: '/message/*',
+          path: '/message/:dmObjectID',
           element: <Dm />,
 
         },
