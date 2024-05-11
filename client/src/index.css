@@ -148,7 +148,19 @@ input{
   grid-template-rows: 1fr 10fr;
   grid-template-columns: 1fr 7fr;
 }
+/* Media query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+  .home-container {
+    height: 500px; /* Set height for smaller screens */
+  }
+}
 
+/* Media query for screens larger than 768px */
+@media screen and (min-width: 769px) {
+  .home-container {
+    height: 700px; /* Set height for larger screens */
+  }
+}
 .sidebar{
   background-color: var(--sidebar-color);
   color: white;

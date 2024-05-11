@@ -110,3 +110,37 @@ exports.sendMsg = [
     };
   })
 ]
+
+exports.getMsg = [
+  body('dmObjectID')
+  .escape()
+  // Check whether the object id recived is valid
+  .custom(async (value) => {
+    if (!ObjectId.isValid(value)) {
+      // If not valid, return a 400 Bad Request response
+      throw new Error("Invalid DM Id");
+    }
+  }),
+  
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+    const {dmObjectID } = req.body;
+    // If there are validation errors, return them
+    if (!errors.isEmpty()) {
+      res.status(400).json({
+        message: errors.array(),
+      });
+    };
+    const allMsg = await Message.find({dm: dmObjectID}).sort("time").populate("author");
+    const messages = allMsg.map(msg => ({
+      id: msg._id,
+      time: msg.time,
+      body: msg.body,
+      author: msg.author.username
+  }));
+    res.status(200).json({
+      status: 200,
+      messages,
+    })
+  })
+]
