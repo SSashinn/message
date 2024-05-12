@@ -144,3 +144,40 @@ exports.getMsg = [
     })
   })
 ]
+
+exports.sidebar = [
+  body('selfObjectID')
+  .escape()
+  // Check whether the object id recived is valid
+  .custom(async (value) => {
+    if (!ObjectId.isValid(value)) {
+      // If not valid, return a 400 Bad Request response
+      throw new Error("Invalid Id");
+    }
+  }),
+
+  asyncHandler(async (req, res) => {
+    // Retrieve validation errors
+    const errors = validationResult(req);
+    const {selfObjectID } = req.body;
+    // If there are validation errors, return them
+    if (!errors.isEmpty()) {
+      res.status(400).json({
+        message: errors.array(),
+      });
+    };
+
+    const dms = await Dm.find({
+      $or: [
+        { user1:selfObjectID },
+        { user2:selfObjectID}
+      ]
+    }).populate(["user1","user2"]);
+
+    const dm = dms.map(dm => ({
+      id: dm._id,
+      user: dm.user1._id === selfObjectID ? dm.user1.username:dm.user2.username,
+  }));
+   res.json({status:200,dm})
+  }),
+];

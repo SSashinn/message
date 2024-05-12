@@ -80,7 +80,7 @@ export default function Dm() {
       <div>
         <p style={{ color: 'red' }}>{error}</p>
         {chats && chats.map(chat => (
-          <div key={chat._id} className={styles.container}>
+          <div key={chat.id} className={styles.container}>
             <div className={styles.header}>
             <h2 className={styles.author}>{chat.author}</h2>
             <p className={styles.time}>{chat.time}</p> 

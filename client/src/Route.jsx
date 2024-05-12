@@ -7,7 +7,6 @@ import Error from './pages/Error';
 import All from './pages/All';
 import Online from './pages/Online';
 import Pending from './pages/Pending';
-import Blocked from './pages/Blocked';
 import Dm from './pages/Dm';
 
 export default function Route() {
@@ -35,11 +34,6 @@ export default function Route() {
         {
           path: '/pending',
           element: <Pending />,
-
-        },
-        {
-          path: '/blocked',
-          element: <Blocked />,
 
         },
         {

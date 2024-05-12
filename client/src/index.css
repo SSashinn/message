@@ -148,17 +148,23 @@ input{
   grid-template-rows: 1fr 10fr;
   grid-template-columns: 1fr 7fr;
 }
-/* Media query for screens smaller than 768px */
+
 @media screen and (max-width: 768px) {
   .home-container {
-    height: 500px; /* Set height for smaller screens */
+    height: 500px; 
+  }
+
+  .sidebar{
+    height: 500px;
   }
 }
 
-/* Media query for screens larger than 768px */
 @media screen and (min-width: 769px) {
   .home-container {
-    height: 700px; /* Set height for larger screens */
+    height: 700px;
+  }
+  .sidebar{
+    height: 665px;
   }
 }
 .sidebar{
@@ -174,6 +180,7 @@ input{
 .sidebar p{
   cursor: pointer;
   padding: 10px;
+  color: white;
 }
 .sidebar p:hover{
   cursor: pointer;
