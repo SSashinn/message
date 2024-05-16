@@ -98,3 +98,7 @@ exports.signin_post = [
     }
   })
 ];
+
+exports.signOut = asyncHandler(async(req, res) => {
+    res.status(200).json('Logged Out');
+})

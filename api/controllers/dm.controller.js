@@ -176,7 +176,7 @@ exports.sidebar = [
 
     const dm = dms.map(dm => ({
       id: dm._id,
-      user: dm.user1._id === selfObjectID ? dm.user1.username:dm.user2.username,
+      user: dm.user1._id == selfObjectID ? dm.user2.username:dm.user1.username,
   }));
    res.json({status:200,dm})
   }),

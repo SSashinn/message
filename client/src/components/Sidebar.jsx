@@ -19,11 +19,11 @@ export default function Sidebar() {
           body: JSON.stringify({ selfObjectID }),
         });
         const data = await res.json();
-        console.log(data);
         if (data.status !== 200) {
           setError(data.message[0].msg);
             return;
         }
+        console.log(data);
         setData(data.dm);
         setError(null);
       } catch (error) {
@@ -32,6 +32,9 @@ export default function Sidebar() {
     })();
   }, [selfObjectID]);
 
+  if (error) 
+    return (<p>{error}</p>)
+  
   return (
     <div className="sidebar">
       <h3>Direct Message</h3>

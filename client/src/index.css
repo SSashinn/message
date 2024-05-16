@@ -43,6 +43,20 @@ a{
   align-items: center;
 }
 
+.signout{
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-family: var(--font);
+  font-size: 1.1em;
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+  min-width: 100px;
+  padding: 5px;
+  margin-left: 20px;
+}
+
 .user{
   display: flex;
   margin-right: 30px;
