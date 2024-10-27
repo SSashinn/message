@@ -1,4 +1,4 @@
-# Chat Application
+# Messaging App
 
 This is a simple chat application built with React and Redux that allows users to add friends, view their friends list, manage pending friend requests, and send messages. The application interfaces with a backend API to manage friend requests and messaging.
 
